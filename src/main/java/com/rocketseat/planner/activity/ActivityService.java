@@ -23,13 +23,13 @@ public class ActivityService {
         return new ActivityResponse(newActivity.getId());
     }
 
-    /*public boolean checkActivityDate(ActivityRequestPayload payload, Trip trip){
+    public boolean checkActivityDate(ActivityRequestPayload payload, Trip trip){
         LocalDateTime dateTime = LocalDateTime.parse(payload.occurs_at(), DateTimeFormatter.ISO_DATE_TIME);
         LocalDateTime tripStart = trip.getStartsAt();
         LocalDateTime tripEnd = trip.getEndsAt();
 
         return dateTime.isAfter(tripStart) && dateTime.isBefore(tripEnd);
-    }*/
+    }
 
     public List<ActivityData> getAllActivitiesFromEvent(UUID tripId){
         return this.repository.findByTripId(tripId).stream().map(activity -> new ActivityData(activity.getId(), activity.getTitle(), activity.getOccursAt())).toList();

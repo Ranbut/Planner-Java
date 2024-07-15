@@ -128,18 +128,14 @@ public class TripController {
         if(trip.isPresent()){
             Trip rawTrip = trip.get();
 
-            /*if (activityService.checkActivityDate(payload, rawTrip)){
+            if (activityService.checkActivityDate(payload, rawTrip)){
                 ActivityResponse activityResponse = this.activityService.registerActivity(payload, rawTrip);
 
                 return ResponseEntity.ok(activityResponse);
             }
             else {
                 return ResponseEntity.badRequest().build();
-            }*/
-
-            ActivityResponse activityResponse = this.activityService.registerActivity(payload, rawTrip);
-
-            return ResponseEntity.ok(activityResponse);
+            }
         }
         return ResponseEntity.notFound().build();
 
